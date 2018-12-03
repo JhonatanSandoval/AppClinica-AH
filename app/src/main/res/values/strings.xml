@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">AppClinica</string>
+    <string name="contentImgs" />
+    <string name="login">Login</string>
+    <string name="document_type">Tipo Documento</string>
+    <string name="document_number">Nro. Documento</string>
+    <string name="password">Contraseña</string>
+    <string name="go_login">Ingresar</string>
+    <string name="register">Registrarse</string>
+    <string name="login_to_books_system">Ingreso al Sistema de Citas</string>
+    <string name="register_for_new_users">Registro de Nuevo Usuario</string>
+    <string name="do_register">Registrar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="names">Nombres</string>
+    <string name="first_last_name">Ape. Paterno.</string>
+    <string name="second_last_name">Ape. Materno</string>
+    <string name="civil_state">Estado Civil</string>
+    <string name="blood_type">Grupo Sanguíneo</string>
+    <string name="accept">Aceptar</string>
+    <string name="no_user_found">No se ha encontrado el usuario.</string>
+    <string name="field_must_be_filled">Debe completar este campo.</string>
+</resources>
