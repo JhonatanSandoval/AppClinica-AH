@@ -6,7 +6,7 @@ import android.arch.persistence.room.PrimaryKey
 
 @Entity(tableName = "users")
 data class User(
-        @PrimaryKey var uid: Int = 0,
+        @PrimaryKey(autoGenerate = true) var uid: Int = 0,
         @ColumnInfo(name = "documentType") var documentType: String? = null,
         @ColumnInfo(name = "documentNumber") var documentNumber: String? = null,
         @ColumnInfo(name = "password") var password: String? = null,

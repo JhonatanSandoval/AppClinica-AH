@@ -19,4 +19,13 @@
     <string name="accept">Aceptar</string>
     <string name="no_user_found">No se ha encontrado el usuario.</string>
     <string name="field_must_be_filled">Debe completar este campo.</string>
+    <string name="my_dates">Mis citas</string>
+    <string name="my_doctors">Mis Médicos</string>
+    <string name="my_records">Mi Historial</string>
+    <string name="doctor">Doctor:</string>
+    <string name="speciality">Especialidad:</string>
+    <string name="date">Fecha:</string>
+    <string name="time">Hora:</string>
+    <string name="invalid_password">La contraseña es inválida.</string>
+    <string name="register_new_date">Registro de Cita</string>
 </resources>

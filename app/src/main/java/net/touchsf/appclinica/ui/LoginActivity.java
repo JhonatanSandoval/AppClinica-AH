@@ -48,13 +48,25 @@ public class LoginActivity extends BaseActivity {
         if (!documentType.isEmpty() && !documentNumber.isEmpty()) {
             User user = getUserByDocumentTypeAndNumber(documentType, documentNumber);
             if (user != null) {
-
+                String password = etPassword.getText().toString().trim();
+                if (!password.isEmpty()) {
+                    if (password.equals(user.getPassword())) {
+                        openMainActivity();
+                    } else {
+                        AlertDialogs.showMessage(context, R.string.invalid_password);
+                    }
+                }
             } else {
                 AlertDialogs.showMessage(context, R.string.no_user_found);
             }
         } else {
             etDocumentNumber.setError(getString(R.string.field_must_be_filled));
         }
+    }
+
+    private void openMainActivity() {
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 
     private User getUserByDocumentTypeAndNumber(String documentType, String documentNumber) {
