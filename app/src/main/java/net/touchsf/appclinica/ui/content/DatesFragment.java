@@ -7,13 +7,15 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import net.touchsf.appclinica.R;
-import net.touchsf.appclinica.database.Database;
 import net.touchsf.appclinica.database.entity.Date;
 import net.touchsf.appclinica.ui.AddDateActivity;
 import net.touchsf.appclinica.ui.adapter.DatesAdapter;
 import net.touchsf.appclinica.ui.base.BaseFragment;
+import net.touchsf.appclinica.util.Constants;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -49,7 +51,28 @@ public class DatesFragment extends BaseFragment {
     }
 
     private List<Date> getUserDates() {
-        return Database.getDatabase(context).dateDao().getAll();
+        List<Date> dates = new ArrayList<>();
+
+        Date date = new Date();
+        date.setSpeciality(Constants.SPECIALITY_TYPES[getRandomNumber(1, 20)]);
+        date.setDoctor(Constants.DOCTORS[getRandomNumber(0, 4)]);
+        date.setDate("06/12/2018");
+        date.setTime("08:00am - 08:30am");
+        dates.add(date);
+
+        date = new Date();
+        date.setSpeciality(Constants.SPECIALITY_TYPES[getRandomNumber(1, 20)]);
+        date.setDoctor(Constants.DOCTORS[getRandomNumber(0, 4)]);
+        date.setDate("08/12/2018");
+        date.setTime("03:30pm - 04:00pm");
+        dates.add(date);
+
+        return dates;
+    }
+
+    private int getRandomNumber(int min, int max) {
+        Random random = new Random();
+        return random.nextInt(max - min) + min;
     }
 
     @OnClick(R.id.fabAddDate)

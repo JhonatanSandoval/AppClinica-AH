@@ -11,6 +11,10 @@ class AddDateActivity : BaseActivity() {
     override fun setUp() {
         setUpSpeciality()
         setUpDoctors()
+
+        tvCancel.setOnClickListener {
+            finish()
+        }
     }
 
     private fun setUpDoctors() {

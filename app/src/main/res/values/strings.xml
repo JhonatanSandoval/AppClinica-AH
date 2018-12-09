@@ -28,4 +28,5 @@
     <string name="time">Hora:</string>
     <string name="invalid_password">La contraseña es inválida.</string>
     <string name="register_new_date">Registro de Cita</string>
+    <string name="total_price">Precio Total: </string>
 </resources>

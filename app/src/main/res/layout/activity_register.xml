@@ -207,31 +207,6 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_fields"
-            android:orientation="horizontal"
-            android:padding="7dp">
-
-            <TextView
-                fontPath="fonts/Roboto-Medium.ttf"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".5"
-                android:gravity="center"
-                android:text="@string/blood_type"
-                android:textColor="@android:color/black"
-                android:textSize="16sp" />
-
-            <android.support.v7.widget.AppCompatSpinner
-                android:id="@+id/spBloodType"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".6"
-                android:spinnerMode="dialog" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:orientation="horizontal"

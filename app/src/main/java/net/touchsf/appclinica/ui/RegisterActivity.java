@@ -17,7 +17,6 @@ public class RegisterActivity extends BaseActivity {
 
     @BindView(R.id.spDocumentType) AppCompatSpinner spDocumentType;
     @BindView(R.id.spCivilState) AppCompatSpinner spCivilState;
-    @BindView(R.id.spBloodType) AppCompatSpinner spBloodType;
     @BindView(R.id.etDocumentNumber) EditText etDocumentNumber;
     @BindView(R.id.etPassword) EditText etPassword;
 
@@ -28,7 +27,6 @@ public class RegisterActivity extends BaseActivity {
         context = this;
         setUpDocumentType();
         setUpCivilState();
-        setUpBloodType();
     }
 
     @OnClick(R.id.tvCancel)
@@ -40,12 +38,6 @@ public class RegisterActivity extends BaseActivity {
     @Override
     public void onBackPressed() {
         cancelRegister();
-    }
-
-    private void setUpBloodType() {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, Constants.BLOOD_TYPES);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spBloodType.setAdapter(adapter);
     }
 
     private void setUpCivilState() {
