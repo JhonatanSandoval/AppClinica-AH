@@ -29,4 +29,10 @@
     <string name="invalid_password">La contraseña es inválida.</string>
     <string name="register_new_date">Registro de Cita</string>
     <string name="total_price">Precio Total: </string>
+    <string name="user_already_exists">Ya existe un usuario con ese tipo y número de documento.</string>
+    <string name="repeat_password">Repita contraseña</string>
+    <string name="password_does_not_match">Las contraseñas no coinciden.</string>
+    <string name="are_you_sure_logout">¿Seguro desea salir?</string>
+    <string name="yes_logout">Si, salir.</string>
+    <string name="no">No</string>
 </resources>

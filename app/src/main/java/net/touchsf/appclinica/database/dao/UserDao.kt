@@ -14,6 +14,9 @@ interface UserDao {
     @Insert
     fun insertAll(users: List<User>)
 
+    @Insert
+    fun insert(users: User)
+
     @Query("SELECT * FROM users WHERE documentType LIKE :documentType AND documentNumber LIKE :documentNumber")
     fun findByDocumentTypeAndNumber(documentType: String, documentNumber: String): User
 

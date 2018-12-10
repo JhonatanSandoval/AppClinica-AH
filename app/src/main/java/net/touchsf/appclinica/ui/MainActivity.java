@@ -1,12 +1,15 @@
 package net.touchsf.appclinica.ui;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 
 import net.touchsf.appclinica.R;
+import net.touchsf.appclinica.preference.AppPrefs;
 import net.touchsf.appclinica.ui.adapter.ContentPagerAdapter;
 import net.touchsf.appclinica.ui.base.BaseActivity;
 import net.touchsf.appclinica.ui.content.DatesFragment;
@@ -14,6 +17,7 @@ import net.touchsf.appclinica.ui.content.DoctorsFragment;
 import net.touchsf.appclinica.ui.content.RecordsFragment;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity {
 
@@ -21,9 +25,11 @@ public class MainActivity extends BaseActivity {
     @BindView(R.id.vpContent) ViewPager vpContent;
 
     private ContentPagerAdapter contentPagerAdapter;
+    private AppPrefs appPrefs;
 
     @Override
     protected void setUp() {
+        appPrefs = new AppPrefs(this);
         configureTabLayout();
     }
 
@@ -35,6 +41,25 @@ public class MainActivity extends BaseActivity {
 
         vpContent.setAdapter(contentPagerAdapter);
         tbOptions.setupWithViewPager(vpContent);
+    }
+
+    @OnClick(R.id.ivLogout)
+    void logout() {
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setMessage(R.string.are_you_sure_logout)
+                .setPositiveButton(R.string.yes_logout, (dialogInterface, i) -> {
+                    appPrefs.setLogged(false);
+                    appPrefs.setUserId(0);
+                    openLoginActivity();
+                })
+                .setNegativeButton(R.string.no, null)
+                .create();
+        alertDialog.show();
+    }
+
+    private void openLoginActivity() {
+        startActivity(new Intent(this, LoginActivity.class));
+        finish();
     }
 
     @Override

@@ -9,6 +9,7 @@ import android.widget.EditText;
 import net.touchsf.appclinica.R;
 import net.touchsf.appclinica.database.Database;
 import net.touchsf.appclinica.database.entity.User;
+import net.touchsf.appclinica.preference.AppPrefs;
 import net.touchsf.appclinica.ui.base.BaseActivity;
 import net.touchsf.appclinica.util.AlertDialogs;
 import net.touchsf.appclinica.util.Constants;
@@ -27,12 +28,15 @@ public class LoginActivity extends BaseActivity {
     @BindView(R.id.etPassword) EditText etPassword;
 
     private Context context;
+    private AppPrefs appPrefs;
 
     @Override
     protected void setUp() {
         context = this;
+        appPrefs = new AppPrefs(context);
         validateInitialUsers();
         setUpDocumentType();
+        checkIfUserIsLogged();
     }
 
     @OnItemSelected(R.id.spDocumentType)
@@ -51,6 +55,8 @@ public class LoginActivity extends BaseActivity {
                 String password = etPassword.getText().toString().trim();
                 if (!password.isEmpty()) {
                     if (password.equals(user.getPassword())) {
+                        appPrefs.setLogged(true);
+                        appPrefs.setUserId(user.getUid());
                         openMainActivity();
                     } else {
                         AlertDialogs.showMessage(context, R.string.invalid_password);
@@ -94,6 +100,12 @@ public class LoginActivity extends BaseActivity {
         List<User> users = Database.getDatabase(context).userDao().getAll();
         if (users == null || users.isEmpty()) {
             insertAllInitialUsers();
+        }
+    }
+
+    private void checkIfUserIsLogged() {
+        if (appPrefs.isLogged() && appPrefs.getUsetId() != 0) {
+            openMainActivity();
         }
     }
 
