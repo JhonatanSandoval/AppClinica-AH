@@ -28,7 +28,8 @@
             android:windowSoftInputMode="adjustPan" />
         <activity android:name=".ui.MainActivity" />
         <activity android:name=".ui.content.dates.AddDateActivity" />
-        <activity android:name=".ui.content.dates.PayDateActivity"></activity>
+        <activity android:name=".ui.content.dates.PayDateActivity" />
+        <activity android:name=".ui.content.histories.HistoryDetailActivity"></activity>
     </application>
 
 </manifest>

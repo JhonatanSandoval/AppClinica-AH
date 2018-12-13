@@ -1,6 +1,7 @@
 package net.touchsf.appclinica.ui.content;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -12,6 +13,7 @@ import net.touchsf.appclinica.database.entity.History;
 import net.touchsf.appclinica.preference.AppPrefs;
 import net.touchsf.appclinica.ui.adapter.HistoriesAdapter;
 import net.touchsf.appclinica.ui.base.BaseFragment;
+import net.touchsf.appclinica.ui.content.histories.HistoryDetailActivity;
 
 import java.util.List;
 
@@ -64,7 +66,7 @@ public class RecordsFragment extends BaseFragment implements HistoriesAdapter.Hi
 
     @Override
     public void objClick(History history) {
-
+        getActivity().startActivity(new Intent(getActivity(), HistoryDetailActivity.class));
     }
 
     private void configureRecyclerview() {

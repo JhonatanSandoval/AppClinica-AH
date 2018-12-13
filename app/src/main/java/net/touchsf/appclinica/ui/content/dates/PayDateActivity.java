@@ -141,6 +141,11 @@ public class PayDateActivity extends BaseActivity {
         return digits;
     }
 
+    @OnClick(R.id.ivBack)
+    void back() {
+        finish();
+    }
+
     @Override
     protected int getLayout() {
         return R.layout.activity_pay_date;

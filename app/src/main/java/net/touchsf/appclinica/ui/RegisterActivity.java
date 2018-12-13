@@ -13,6 +13,7 @@ import net.touchsf.appclinica.R;
 import net.touchsf.appclinica.database.Database;
 import net.touchsf.appclinica.database.entity.User;
 import net.touchsf.appclinica.preference.AppPrefs;
+import net.touchsf.appclinica.ui.adapter.GeneralSpinnerAdapter;
 import net.touchsf.appclinica.ui.base.BaseActivity;
 import net.touchsf.appclinica.util.AlertDialogs;
 import net.touchsf.appclinica.util.Constants;
@@ -45,6 +46,11 @@ public class RegisterActivity extends BaseActivity {
         setUpDocumentType();
         setUpCivilState();
         setUpBirthday();
+    }
+
+    @OnClick(R.id.ivBack)
+    void back() {
+        openMainActivity();
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -136,14 +142,18 @@ public class RegisterActivity extends BaseActivity {
     }
 
     private void setUpCivilState() {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, Constants.CIVIL_STATE);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        GeneralSpinnerAdapter adapter = new GeneralSpinnerAdapter(spCivilState);
+        adapter.setNothingSelectedDataItem("");
+        adapter.update(Constants.CIVIL_STATE);
+        adapter.setSelection(-1);
         spCivilState.setAdapter(adapter);
     }
 
     private void setUpDocumentType() {
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, Constants.DOCUMENT_TYPES);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        GeneralSpinnerAdapter adapter = new GeneralSpinnerAdapter(spDocumentType);
+        adapter.setNothingSelectedDataItem("");
+        adapter.update(Constants.DOCUMENT_TYPES);
+        adapter.setSelection(-1);
         spDocumentType.setAdapter(adapter);
     }
 

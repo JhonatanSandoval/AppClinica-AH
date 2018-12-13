@@ -6,13 +6,13 @@ import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.MotionEvent
-import android.widget.ArrayAdapter
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_add_date.*
 import net.touchsf.appclinica.R
 import net.touchsf.appclinica.database.Database
 import net.touchsf.appclinica.database.entity.Date
 import net.touchsf.appclinica.preference.AppPrefs
+import net.touchsf.appclinica.ui.adapter.GeneralSpinnerAdapter
 import net.touchsf.appclinica.ui.base.BaseActivity
 import net.touchsf.appclinica.util.Constants
 import java.util.*
@@ -58,6 +58,10 @@ class AddDateActivity : BaseActivity() {
             val intent = Intent(this, PayDateActivity::class.java)
             intent.putExtra("price", defaultPrice)
             startActivityForResult(intent, 123)
+        }
+
+        ivBack.setOnClickListener {
+            finish()
         }
 
         validateFields()
@@ -106,7 +110,9 @@ class AddDateActivity : BaseActivity() {
 
     private fun validateFields() {
         val date = etDate.text.toString().trim()
-        if (date.isNotEmpty()) {
+
+        if (date.isNotEmpty() && spSpeciality.selectedItem != -1 &&
+                spDoctor.selectedItem != -1 && spTime.selectedItem != -1) {
             tvTotalPrice.text = "S/ $defaultPrice"
             btnPay.isEnabled = true
             btnPay.isClickable = true
@@ -120,20 +126,26 @@ class AddDateActivity : BaseActivity() {
     }
 
     private fun setUpTimes() {
-        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Constants.TIMES)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val adapter = GeneralSpinnerAdapter(spTime)
+        adapter.nothingSelectedDataItem = "-- Seleccione uno --"
+        adapter.update(Constants.TIMES)
+        adapter.setSelection(-1)
         spTime.adapter = adapter
     }
 
     private fun setUpDoctors() {
-        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Constants.DOCTORS)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val adapter = GeneralSpinnerAdapter(spDoctor)
+        adapter.nothingSelectedDataItem = "-- Seleccione uno --"
+        adapter.update(Constants.DOCTORS)
+        adapter.setSelection(-1)
         spDoctor.adapter = adapter
     }
 
     private fun setUpSpeciality() {
-        val adapter = ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, Constants.SPECIALITY_TYPES)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        val adapter = GeneralSpinnerAdapter(spSpeciality)
+        adapter.nothingSelectedDataItem = "-- Seleccione uno --"
+        adapter.update(Constants.SPECIALITY_TYPES)
+        adapter.setSelection(-1)
         spSpeciality.adapter = adapter
     }
 

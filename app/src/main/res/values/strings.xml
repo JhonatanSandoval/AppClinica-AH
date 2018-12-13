@@ -53,4 +53,9 @@
     <string name="my_profile">Mis Datos</string>
     <string name="attention_date">Fecha Atención</string>
     <string name="birthday">Fec. Nacimiento</string>
+    <string name="details">Detalle</string>
+    <string name="medicament">Medicamento</string>
+    <string name="paracetamol">Paracetamol</string>
+    <string name="quantity">Cantidad</string>
+    <string name="instructions">Instrucciones</string>
 </resources>
