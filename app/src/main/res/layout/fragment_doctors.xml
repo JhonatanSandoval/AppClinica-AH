@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:ignore="MissingPrefix">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvDoctors"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="20dp" />
+
+    <TextView
+        android:id="@+id/tvNoDoctors"
+        fontPath="fonts/Roboto-Medium.ttf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:drawableTop="@drawable/ic_doctor_grey600_48dp"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="@string/you_have_no_doctors"
+        android:textSize="23sp"
+        android:visibility="gone" />
 
 </RelativeLayout>

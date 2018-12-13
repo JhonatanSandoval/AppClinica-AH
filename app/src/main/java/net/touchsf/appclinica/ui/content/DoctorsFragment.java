@@ -2,8 +2,9 @@ package net.touchsf.appclinica.ui.content;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.TextView;
 
 import net.touchsf.appclinica.R;
 import net.touchsf.appclinica.database.Database;
@@ -25,6 +26,7 @@ public class DoctorsFragment extends BaseFragment {
     }
 
     @BindView(R.id.rvDoctors) RecyclerView rvDoctors;
+    @BindView(R.id.tvNoDoctors) TextView tvNoDoctors;
 
     private Context context;
     private AppPrefs appPrefs;
@@ -42,7 +44,19 @@ public class DoctorsFragment extends BaseFragment {
     private void loadDoctors() {
         rvDoctors.setLayoutManager(new GridLayoutManager(context, 2));
         rvDoctors.setAdapter(adapter);
-        adapter.setDoctors(getDoctors());
+
+        if (!getDoctors().isEmpty()) {
+            rvDoctors.setVisibility(View.VISIBLE);
+            tvNoDoctors.setVisibility(View.GONE);
+
+            adapter.setDoctors(getDoctors());
+
+        } else {
+            rvDoctors.setVisibility(View.GONE);
+            tvNoDoctors.setVisibility(View.VISIBLE);
+
+        }
+
     }
 
     private List<String> getDoctors() {

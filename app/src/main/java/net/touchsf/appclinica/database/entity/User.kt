@@ -13,5 +13,7 @@ data class User(
         @ColumnInfo(name = "names") var names: String? = null,
         @ColumnInfo(name = "firstLastName") var firstLastName: String? = null,
         @ColumnInfo(name = "secondLastName") var secondLastName: String? = null,
-        @ColumnInfo(name = "civilState") var civilState: String? = null
+        @ColumnInfo(name = "civilState") var civilState: String? = null,
+        @ColumnInfo(name = "birthday") var birthday: String? = null,
+        @ColumnInfo(name = "placeBirth") var placeBirth: String? = null
 )

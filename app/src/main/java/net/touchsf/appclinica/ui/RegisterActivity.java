@@ -1,8 +1,11 @@
 package net.touchsf.appclinica.ui;
 
+import android.annotation.SuppressLint;
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.AppCompatSpinner;
+import android.view.MotionEvent;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 
@@ -14,7 +17,7 @@ import net.touchsf.appclinica.ui.base.BaseActivity;
 import net.touchsf.appclinica.util.AlertDialogs;
 import net.touchsf.appclinica.util.Constants;
 
-import java.util.ArrayList;
+import java.util.Calendar;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -29,6 +32,8 @@ public class RegisterActivity extends BaseActivity {
     @BindView(R.id.etNames) EditText etNames;
     @BindView(R.id.etFirstLastName) EditText etFirstLastName;
     @BindView(R.id.etSecondLastName) EditText etSecondLastName;
+    @BindView(R.id.etBirthday) EditText etBirthday;
+    @BindView(R.id.etBirthPlace) EditText etBirthPlace;
 
     private Context context;
     private AppPrefs appPrefs;
@@ -39,6 +44,29 @@ public class RegisterActivity extends BaseActivity {
         appPrefs = new AppPrefs(context);
         setUpDocumentType();
         setUpCivilState();
+        setUpBirthday();
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    private void setUpBirthday() {
+        etBirthday.setOnTouchListener((view, motionEvent) -> {
+            if (MotionEvent.ACTION_UP == motionEvent.getAction()) {
+                openDatePickerDialog();
+            }
+            return true;
+        });
+    }
+
+    private Calendar calendar = Calendar.getInstance();
+    private int year = calendar.get(Calendar.YEAR);
+    private int month = calendar.get(Calendar.MONTH);
+    private int day = calendar.get(Calendar.DAY_OF_MONTH);
+
+    private void openDatePickerDialog() {
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, (datePicker, year, month, dayOfMonth) -> {
+            etBirthday.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+        }, year, month, day);
+        datePickerDialog.show();
     }
 
     @OnClick(R.id.btnRegister)
@@ -50,9 +78,11 @@ public class RegisterActivity extends BaseActivity {
         String firstLastName = etFirstLastName.getText().toString().trim();
         String secondLastName = etSecondLastName.getText().toString().trim();
         String civilState = spCivilState.getSelectedItem().toString();
+        String birthday = etBirthday.getText().toString().trim();
+        String birthPlace = etBirthPlace.getText().toString().trim();
 
         if (!documentNumber.isEmpty() && !password.isEmpty() && !names.isEmpty() && !firstLastName.isEmpty()
-                && !secondLastName.isEmpty()) {
+                && !secondLastName.isEmpty() && !birthday.isEmpty() && !birthPlace.isEmpty()) {
 
             if (password.equals(etRepeatPassword.getText().toString().trim())) {
 
@@ -65,6 +95,8 @@ public class RegisterActivity extends BaseActivity {
                     user.setSecondLastName(secondLastName);
                     user.setPassword(password);
                     user.setCivilState(civilState);
+                    user.setBirthday(birthday);
+                    user.setPlaceBirth(birthPlace);
                     Database.getDatabase(context).userDao().insert(user);
 
                     appPrefs.setLogged(true);

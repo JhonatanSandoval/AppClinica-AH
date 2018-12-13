@@ -20,4 +20,7 @@ interface UserDao {
     @Query("SELECT * FROM users WHERE documentType LIKE :documentType AND documentNumber LIKE :documentNumber")
     fun findByDocumentTypeAndNumber(documentType: String, documentNumber: String): User
 
+    @Query("SELECT * FROM users WHERE uid = :userId")
+    fun findByUserId(userId: Int) : User
+
 }

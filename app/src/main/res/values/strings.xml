@@ -23,7 +23,10 @@
     <string name="my_doctors">Mis Médicos</string>
     <string name="my_records">Mi Historial</string>
     <string name="doctor">Doctor:</string>
+    <string name="doctor_without2pts">Doctor</string>
+    <string name="diagnostic">Diagnóstico</string>
     <string name="speciality">Especialidad:</string>
+    <string name="speciality_w2pts">Especialidad</string>
     <string name="date">Fecha:</string>
     <string name="time">Hora:</string>
     <string name="invalid_password">La contraseña es inválida.</string>
@@ -35,4 +38,19 @@
     <string name="are_you_sure_logout">¿Seguro desea salir?</string>
     <string name="yes_logout">Si, salir.</string>
     <string name="no">No</string>
+    <string name="pay_date">Pagar Cita</string>
+    <string name="card_number">Número Tarjeta</string>
+    <string name="confirm">Confirmar</string>
+    <string name="your_date_has_been_saved">Su cita se ha registrado</string>
+    <string name="you_have_no_dates">Aún no tiene ninguna cita programada.</string>
+    <string name="you_have_no_doctors">Ningún doctor lo está atendiendo.</string>
+    <string name="you_have_no_histories">Hasta el momento, no tiene ningun historial clínico</string>
+    <string name="clinic_history_number_2pts">Nº Historia Clínica:</string>
+    <string name="names_lastnames_2pts">Nombres y Apellidos:</string>
+    <string name="age_2pts">Edad:</string>
+    <string name="place_birth">Lugar de Nac.</string>
+    <string name="place_birth_2pts">Lugar de Nac.:</string>
+    <string name="my_profile">Mis Datos</string>
+    <string name="attention_date">Fecha Atención</string>
+    <string name="birthday">Fec. Nacimiento</string>
 </resources>

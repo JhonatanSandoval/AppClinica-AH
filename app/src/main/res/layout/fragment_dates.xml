@@ -3,13 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    tools:ignore="MissingPrefix">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvDates"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="15dp"
+        android:visibility="gone"
         tools:listitem="@layout/item_date" />
 
     <android.support.design.widget.FloatingActionButton
@@ -22,5 +25,20 @@
         android:focusable="true"
         android:src="@drawable/ic_plus_white_24dp"
         app:fabSize="normal" />
+
+    <TextView
+        android:id="@+id/tvNoDates"
+        fontPath="fonts/Roboto-Medium.ttf"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:drawableTop="@drawable/ic_calendar_blank_grey600_48dp"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:padding="20dp"
+        android:text="@string/you_have_no_dates"
+        android:textSize="23sp"
+        android:visibility="gone" />
 
 </FrameLayout>

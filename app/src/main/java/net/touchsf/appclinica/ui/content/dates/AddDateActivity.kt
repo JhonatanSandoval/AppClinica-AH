@@ -1,12 +1,13 @@
-package net.touchsf.appclinica.ui
+package net.touchsf.appclinica.ui.content.dates
 
 import android.app.Activity
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.MotionEvent
-import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_add_date.*
 import net.touchsf.appclinica.R
 import net.touchsf.appclinica.database.Database
@@ -53,12 +54,24 @@ class AddDateActivity : BaseActivity() {
             true
         }
 
-        btnRegister.setOnClickListener {
+        btnPay.setOnClickListener {
+            val intent = Intent(this, PayDateActivity::class.java)
+            intent.putExtra("price", defaultPrice)
+            startActivityForResult(intent, 123)
+        }
+
+        validateFields()
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (requestCode == 123 && resultCode == Activity.RESULT_OK) {
             saveDate()
         }
     }
 
     private fun saveDate() {
+        Toast.makeText(this, R.string.your_date_has_been_saved, Toast.LENGTH_LONG).show()
+
         Database.getDatabase(this).dateDao()
                 .insertDate(Date(
                         user_id = appPrefs.usetId,
@@ -72,9 +85,15 @@ class AddDateActivity : BaseActivity() {
     }
 
     private fun openDatePickerDialog() {
-        val datePicker = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { datePicker, year, month, dayOfMonth ->
+        val maxCalendar = Calendar.getInstance()
+        maxCalendar.add(Calendar.DAY_OF_YEAR, +7)
+
+        val datePicker = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
             etDate.setText("$dayOfMonth/${month + 1}/$year")
         }, year, month, day)
+
+        datePicker.datePicker.minDate = java.util.Date().time
+        datePicker.datePicker.maxDate = maxCalendar.timeInMillis
         datePicker.show()
     }
 
@@ -84,19 +103,19 @@ class AddDateActivity : BaseActivity() {
     val year = calendar.get(Calendar.YEAR)
     val month = calendar.get(Calendar.MONTH)
     val day = calendar.get(Calendar.DAY_OF_MONTH)
-    val hour = calendar.get(Calendar.HOUR_OF_DAY)
-    val minute = calendar.get(Calendar.MINUTE)
 
     private fun validateFields() {
         val date = etDate.text.toString().trim()
         if (date.isNotEmpty()) {
             tvTotalPrice.text = "S/ $defaultPrice"
-            btnRegister.isEnabled = true
-            btnRegister.isClickable = true
+            btnPay.isEnabled = true
+            btnPay.isClickable = true
+            btnPay.alpha = 1.0f
         } else {
             tvTotalPrice.text = "S/ --"
-            btnRegister.isEnabled = false
-            btnRegister.isClickable = false
+            btnPay.isEnabled = false
+            btnPay.isClickable = false
+            btnPay.alpha = 0.5f
         }
     }
 

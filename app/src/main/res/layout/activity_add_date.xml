@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.AddDateActivity"
+    tools:context=".ui.content.dates.AddDateActivity"
     tools:ignore="MissingPrefix">
 
     <LinearLayout
@@ -170,7 +170,7 @@
                 android:textSize="16sp" />
 
             <Button
-                android:id="@+id/btnRegister"
+                android:id="@+id/btnPay"
                 fontPath="fonts/Roboto-Bold.ttf"
                 android:layout_width="0dp"
                 android:layout_height="55dp"
@@ -178,7 +178,7 @@
                 android:layout_weight=".5"
                 android:clickable="false"
                 android:enabled="false"
-                android:text="@string/do_register"
+                android:text="@string/pay_date"
                 android:textAllCaps="false"
                 android:textSize="16sp"
                 android:theme="@style/general_btn" />

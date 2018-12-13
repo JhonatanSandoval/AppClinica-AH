@@ -1,6 +1,5 @@
 package net.touchsf.appclinica.ui;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -15,6 +14,8 @@ import net.touchsf.appclinica.ui.base.BaseActivity;
 import net.touchsf.appclinica.ui.content.DatesFragment;
 import net.touchsf.appclinica.ui.content.DoctorsFragment;
 import net.touchsf.appclinica.ui.content.RecordsFragment;
+import net.touchsf.appclinica.ui.dialog.ProfileDialog;
+import net.touchsf.appclinica.util.AlertDialogs;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -41,6 +42,11 @@ public class MainActivity extends BaseActivity {
 
         vpContent.setAdapter(contentPagerAdapter);
         tbOptions.setupWithViewPager(vpContent);
+    }
+
+    @OnClick(R.id.ivProfile)
+    void profile() {
+        AlertDialogs.openDialog(new ProfileDialog(this));
     }
 
     @OnClick(R.id.ivLogout)

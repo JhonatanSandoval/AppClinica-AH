@@ -8,6 +8,7 @@ import android.widget.EditText;
 
 import net.touchsf.appclinica.R;
 import net.touchsf.appclinica.database.Database;
+import net.touchsf.appclinica.database.entity.History;
 import net.touchsf.appclinica.database.entity.User;
 import net.touchsf.appclinica.preference.AppPrefs;
 import net.touchsf.appclinica.ui.base.BaseActivity;
@@ -111,18 +112,26 @@ public class LoginActivity extends BaseActivity {
 
     private void insertAllInitialUsers() {
         List<User> users = new ArrayList<>();
-
         User user = new User();
         user.setDocumentType(Constants.DOCUMENT_TYPES[0]);
-        user.setDocumentNumber("73123125");
+        user.setDocumentNumber("10082626");
         user.setPassword("123");
-        user.setNames("Jhonatan Joel");
-        user.setFirstLastName("Sandoval");
-        user.setSecondLastName("Bazán");
+        user.setNames("Miguel Dario");
+        user.setFirstLastName("Armey");
+        user.setSecondLastName("Tejada");
         user.setCivilState(Constants.CIVIL_STATE[0]);
+        user.setBirthday("01/12/1978");
+        user.setPlaceBirth("Cañete, Perú");
         users.add(user);
-
         Database.getDatabase(context).userDao().insertAll(users);
+
+        History history = new History();
+        history.setUser_id(1);
+        history.setDate("05/06/2018");
+        history.setSpeciality("Medicina general");
+        history.setDiagnostic("Crisis asmática");
+        history.setDoctor("Rocío Miraval Cruz");
+        Database.getDatabase(context).historyDao().insertDate(history);
     }
 
 }

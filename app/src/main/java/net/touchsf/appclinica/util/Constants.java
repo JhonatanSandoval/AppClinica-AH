@@ -8,12 +8,12 @@ public class Constants {
     public static final String[] SPECIALITY_TYPES = new String[]{"Alergología", "Anestesiología y reanimación", "Cardiología",
             "Gastroenterología", "Endocrinología", "Geriatría", "Hematología y hemoterapia", "Infectología", "Medicina aeroespacial",
             "Medicina del deporte", "Medicina del trabajo", "Medicina de urgencias", "Medicina familiar y comunitaria",
-            "Medicina física y rehabilitación", "Medicina intensiva", "Medicina interna", "Medicina legal y forense",
+            "Medicina física y rehabilitación", "Medicina general", "Medicina intensiva", "Medicina interna", "Medicina legal y forense",
             "Medicina preventiva y salud pública", "Medicina veterinaria", "Nefrología", "Neumología", "Neurología",
             "Nutriología", "Oftalmología", "Oncología médica", "Oncología radioterápica", "Pediatría", "Psiquiatría",
             "Rehabilitación", "Reumatología", "Toxicología", "Urología"};
     public static final String[] DOCTORS = new String[]{"John Jacob Abel", "Patch Adams", "Arístides Agramonte Simoni",
-            "Raymond P. Ahlquist", "Edgar Allen", "Luis F. Álvarez", "Dorothy Hansine Andersen", "Virginia Apgar"};
+            "Raymond P. Ahlquist", "Edgar Allen", "Luis F. Álvarez", "Dorothy Hansine Andersen", "Virginia Apgar", "José Ramirez Peña"};
     public static final String[] TIMES = new String[]{
             "08:00am - 08:20am",
             "08:30am - 08:50am",
