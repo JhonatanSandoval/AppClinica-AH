@@ -58,4 +58,7 @@
     <string name="paracetamol">Paracetamol</string>
     <string name="quantity">Cantidad</string>
     <string name="instructions">Instrucciones</string>
+    <string name="recipe">Receta</string>
+    <string name="tuition">Colegiatura</string>
+    <string name="consulting_room">Consultorio</string>
 </resources>

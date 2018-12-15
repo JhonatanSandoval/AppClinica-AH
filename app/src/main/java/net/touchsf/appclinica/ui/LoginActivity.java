@@ -130,7 +130,7 @@ public class LoginActivity extends BaseActivity {
         history.setDate("05/06/2018");
         history.setSpeciality("Medicina general");
         history.setDiagnostic("Crisis asmática");
-        history.setDoctor("Rocío Miraval Cruz");
+        history.setDoctor("José Ramírez peña");
         Database.getDatabase(context).historyDao().insertDate(history);
     }
 

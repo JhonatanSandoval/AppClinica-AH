@@ -10,6 +10,7 @@ import android.widget.TextView;
 import net.touchsf.appclinica.R;
 import net.touchsf.appclinica.database.entity.Date;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,7 @@ import butterknife.ButterKnife;
 public class DatesAdapter extends RecyclerView.Adapter<DatesAdapter.DateHolder> {
 
     private List<Date> dates = new ArrayList<>();
+    private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     public void setDates(List<Date> dates) {
         this.dates = dates;
@@ -56,7 +58,8 @@ public class DatesAdapter extends RecyclerView.Adapter<DatesAdapter.DateHolder> 
         void bind(Date objDate) {
             tvDoctor.setText(objDate.getDoctor());
             tvSpeciality.setText(objDate.getSpeciality());
-            tvDate.setText(objDate.getDate());
+            //tvDate.setText(objDate.getDate());
+            tvDate.setText(sdf.format(new java.util.Date()));
             tvTime.setText(objDate.getTime());
         }
     }

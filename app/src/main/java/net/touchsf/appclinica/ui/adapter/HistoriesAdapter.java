@@ -11,7 +11,9 @@ import android.widget.TextView;
 import net.touchsf.appclinica.R;
 import net.touchsf.appclinica.database.entity.History;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.BindView;
@@ -21,6 +23,7 @@ public class HistoriesAdapter extends RecyclerView.Adapter<HistoriesAdapter.Hist
 
     private List<History> histories = new ArrayList<>();
     private HistoryClickListener clickListener;
+    private SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 
     public void setHistories(List<History> histories) {
         this.histories = histories;
@@ -41,7 +44,8 @@ public class HistoriesAdapter extends RecyclerView.Adapter<HistoriesAdapter.Hist
     @Override
     public void onBindViewHolder(@NonNull HistoriesAdapter.HistoryHolder viewHolder, int position) {
         History objHistory = histories.get(position);
-        viewHolder.tvAttentionDate.setText(objHistory.getDate());
+        //viewHolder.tvAttentionDate.setText(objHistory.getDate());
+        viewHolder.tvAttentionDate.setText(sdf.format(new Date()));
         viewHolder.tvDiagnostic.setText(objHistory.getDiagnostic());
         viewHolder.tvDoctor.setText(objHistory.getDoctor());
         viewHolder.tvSpeciality.setText(objHistory.getSpeciality());

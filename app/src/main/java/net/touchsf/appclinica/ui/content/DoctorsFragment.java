@@ -1,6 +1,7 @@
 package net.touchsf.appclinica.ui.content;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -9,9 +10,11 @@ import android.widget.TextView;
 import net.touchsf.appclinica.R;
 import net.touchsf.appclinica.database.Database;
 import net.touchsf.appclinica.database.entity.Date;
+import net.touchsf.appclinica.model.DetailDoctor;
 import net.touchsf.appclinica.preference.AppPrefs;
 import net.touchsf.appclinica.ui.adapter.DoctorAdapter;
 import net.touchsf.appclinica.ui.base.BaseFragment;
+import net.touchsf.appclinica.ui.content.doctors.DetailDoctorActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,7 +22,7 @@ import java.util.List;
 
 import butterknife.BindView;
 
-public class DoctorsFragment extends BaseFragment {
+public class DoctorsFragment extends BaseFragment implements DoctorAdapter.DoctorClickListener {
 
     public static DoctorsFragment newInstance() {
         return new DoctorsFragment();
@@ -59,13 +62,13 @@ public class DoctorsFragment extends BaseFragment {
 
     }
 
-    private List<String> getDoctors() {
-        List<String> doctors = new ArrayList<>();
+    private List<DetailDoctor> getDoctors() {
+        List<DetailDoctor> doctors = new ArrayList<>();
         List<Date> dates = Database.getDatabase(context).dateDao().getDatesFromuser(appPrefs.getUsetId());
         if (!dates.isEmpty()) {
             for (Date date : dates) {
                 if (!Arrays.asList(doctors).contains(date.getDoctor())) {
-                    doctors.add(date.getDoctor());
+                    doctors.add(new DetailDoctor(date.getDoctor(), date.getSpeciality(), ""));
                 }
             }
         }
@@ -78,6 +81,7 @@ public class DoctorsFragment extends BaseFragment {
         appPrefs = new AppPrefs(context);
 
         adapter = new DoctorAdapter();
+        adapter.setClickListener(this);
         adapter.setContext(context);
     }
 
@@ -85,5 +89,12 @@ public class DoctorsFragment extends BaseFragment {
     @Override
     protected int getLayout() {
         return R.layout.fragment_doctors;
+    }
+
+    @Override
+    public void click(DetailDoctor detailDoctor) {
+        Intent intent = new Intent(getActivity(), DetailDoctorActivity.class);
+        intent.putExtra("doctor", detailDoctor);
+        startActivity(intent);
     }
 }

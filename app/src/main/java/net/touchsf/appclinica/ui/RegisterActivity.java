@@ -6,8 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.AppCompatSpinner;
 import android.view.MotionEvent;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import net.touchsf.appclinica.R;
 import net.touchsf.appclinica.database.Database;
@@ -77,13 +77,13 @@ public class RegisterActivity extends BaseActivity {
 
     @OnClick(R.id.btnRegister)
     void register() {
-        String documentType = spDocumentType.getSelectedItem().toString();
+        String documentType = Constants.DOCUMENT_TYPES[spDocumentType.getSelectedItemPosition() - 1];
         String documentNumber = etDocumentNumber.getText().toString().trim();
         String password = etPassword.getText().toString().trim();
         String names = etNames.getText().toString().trim();
         String firstLastName = etFirstLastName.getText().toString().trim();
         String secondLastName = etSecondLastName.getText().toString().trim();
-        String civilState = spCivilState.getSelectedItem().toString();
+        String civilState = Constants.CIVIL_STATE[spCivilState.getSelectedItemPosition() - 1];
         String birthday = etBirthday.getText().toString().trim();
         String birthPlace = etBirthPlace.getText().toString().trim();
 
@@ -107,7 +107,10 @@ public class RegisterActivity extends BaseActivity {
 
                     appPrefs.setLogged(true);
                     appPrefs.setUserId(Database.getDatabase(context).userDao().findByDocumentTypeAndNumber(documentType, documentNumber).getUid());
+
+                    Toast.makeText(this, "Bienvenid@", Toast.LENGTH_SHORT).show();
                     openMainActivity();
+
                 } else {
                     AlertDialogs.showMessage(context, R.string.user_already_exists);
 

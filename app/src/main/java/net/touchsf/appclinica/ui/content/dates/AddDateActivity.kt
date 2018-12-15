@@ -79,10 +79,10 @@ class AddDateActivity : BaseActivity() {
         Database.getDatabase(this).dateDao()
                 .insertDate(Date(
                         user_id = appPrefs.usetId,
-                        speciality = spSpeciality.selectedItem.toString(),
-                        doctor = spDoctor.selectedItem.toString(),
+                        speciality = Constants.SPECIALITY_TYPES[spSpeciality.selectedItemPosition - 1],
+                        doctor = Constants.DOCTORS[spDoctor.selectedItemPosition - 1],
                         date = etDate.text.toString().trim(),
-                        time = spTime.selectedItem.toString()
+                        time = Constants.TIMES[spTime.selectedItemPosition - 1]
                 ))
         setResult(Activity.RESULT_OK)
         finish()

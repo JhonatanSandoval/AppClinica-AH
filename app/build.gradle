@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlinx-serialization'
 
 android {
     compileSdkVersion 28
@@ -49,6 +50,8 @@ dependencies {
     implementation "com.facebook.stetho:stetho:$stetho_v"
 
     implementation "com.squareup.picasso:picasso:$picasso_v"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.9.1"
 
 }
 

@@ -36,7 +36,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="10dp"
                     android:gravity="center_vertical"
-                    android:text="@string/recipe"
+                    android:text="@string/doctor_without2pts"
                     android:textColor="@android:color/white"
                     android:textSize="20sp" />
 
@@ -56,12 +56,12 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/medicament"
+            android:text="@string/names"
             android:textColor="@android:color/black"
             android:textSize="17sp" />
 
         <EditText
-            android:id="@+id/etMedicament"
+            android:id="@+id/etDoctor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -71,7 +71,6 @@
             android:gravity="center"
             android:inputType="text"
             android:padding="5dp"
-            android:text="@string/paracetamol"
             android:textColor="@android:color/black"
             android:textSize="16sp" />
 
@@ -79,12 +78,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="@string/quantity"
+            android:text="@string/speciality_w2pts"
             android:textColor="@android:color/black"
             android:textSize="17sp" />
 
         <EditText
-            android:id="@+id/etQuantity"
+            android:id="@+id/etSpeciality"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -94,20 +93,20 @@
             android:gravity="center"
             android:inputType="text"
             android:padding="5dp"
-            android:text="5 UNIDADES"
             android:textColor="@android:color/black"
             android:textSize="16sp" />
+
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="@string/instructions"
+            android:text="@string/tuition"
             android:textColor="@android:color/black"
             android:textSize="17sp" />
 
         <EditText
-            android:id="@+id/etInstructions"
+            android:id="@+id/etTuition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -115,10 +114,33 @@
             android:enabled="false"
             android:focusable="false"
             android:gravity="center"
-            android:inputType="textMultiLine"
-            android:lines="4"
-            android:padding="10dp"
-            android:text="INGERIR UNA TOMA ANTES DE DORMIR, POR 5 HORAS"
+            android:inputType="text"
+            android:padding="5dp"
+            android:text="12345"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/consulting_room"
+            android:textColor="@android:color/black"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/etConsultingRoom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/et_disabled"
+            android:enabled="false"
+            android:focusable="false"
+            android:gravity="center"
+            android:text="105"
+            android:inputType="text"
+            android:padding="5dp"
             android:textColor="@android:color/black"
             android:textSize="16sp" />
 
