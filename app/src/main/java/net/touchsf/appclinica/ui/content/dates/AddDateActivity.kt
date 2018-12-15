@@ -14,6 +14,7 @@ import net.touchsf.appclinica.database.entity.Date
 import net.touchsf.appclinica.preference.AppPrefs
 import net.touchsf.appclinica.ui.adapter.GeneralSpinnerAdapter
 import net.touchsf.appclinica.ui.base.BaseActivity
+import net.touchsf.appclinica.util.AlertDialogs
 import net.touchsf.appclinica.util.Constants
 import java.util.*
 
@@ -55,9 +56,7 @@ class AddDateActivity : BaseActivity() {
         }
 
         btnPay.setOnClickListener {
-            val intent = Intent(this, PayDateActivity::class.java)
-            intent.putExtra("price", defaultPrice)
-            startActivityForResult(intent, 123)
+            validateDateToSave()
         }
 
         ivBack.setOnClickListener {
@@ -65,6 +64,33 @@ class AddDateActivity : BaseActivity() {
         }
 
         validateFields()
+    }
+
+    private fun validateDateToSave() {
+        val newCalendar = Calendar.getInstance()
+        newCalendar.add(Calendar.DAY_OF_MONTH, +1)
+
+        val nYear = newCalendar.get(Calendar.YEAR)
+        val nMonth = newCalendar.get(Calendar.MONTH)
+        val nDay = newCalendar.get(Calendar.DAY_OF_MONTH)
+        var monthStr = "${nMonth + 1}"
+        if (nMonth < 10) {
+            monthStr = "0${nMonth + 1}"
+        }
+        var dayStr = "$nDay"
+        if (nDay < 10) {
+            dayStr = "0$nDay"
+        }
+        val tomorrow = "$dayStr/$monthStr/$nYear"
+
+        val dateToSave = etDate.text.toString().trim()
+        if (dateToSave != tomorrow) {
+            val intent = Intent(this, PayDateActivity::class.java)
+            intent.putExtra("price", defaultPrice)
+            startActivityForResult(intent, 123)
+        } else {
+            AlertDialogs.showMessage(this, R.string.date_is_no_available_for_dates)
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -90,10 +116,19 @@ class AddDateActivity : BaseActivity() {
 
     private fun openDatePickerDialog() {
         val maxCalendar = Calendar.getInstance()
-        maxCalendar.add(Calendar.DAY_OF_YEAR, +7)
+        maxCalendar.add(Calendar.MONTH, +2)
 
         val datePicker = DatePickerDialog(this, DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
-            etDate.setText("$dayOfMonth/${month + 1}/$year")
+            var monthStr = "${month + 1}"
+            if (month < 10) {
+                monthStr = "0${month + 1}"
+            }
+
+            var dayStr = "$dayOfMonth"
+            if (dayOfMonth < 10) {
+                dayStr = "0$dayOfMonth"
+            }
+            etDate.setText("$dayStr/$monthStr/$year")
         }, year, month, day)
 
         datePicker.datePicker.minDate = java.util.Date().time

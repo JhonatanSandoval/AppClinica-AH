@@ -61,4 +61,5 @@
     <string name="recipe">Receta</string>
     <string name="tuition">Colegiatura</string>
     <string name="consulting_room">Consultorio</string>
+    <string name="date_is_no_available_for_dates">No hay citas disponibles para el día seleccionado.</string>
 </resources>
